@@ -4,15 +4,20 @@ namespace App\Http\Controllers\Dashboard\Auth;
 
 use App\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
 use App\Events\Admin\PasswordForgotten;
 
 class ForgetPasswordController extends Controller
 {
 
-    private $path = 'dashboard.auth.passwords'; 
+
+    private $path = 'dashboard.auth.passwords';
+    
+    
+    public function  __construct()
+    {
+        $this->middleware('authadmin');
+    }
 
     public function showForgetPasswordForm()
     {

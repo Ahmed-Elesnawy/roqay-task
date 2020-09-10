@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -29,6 +31,34 @@ Route::prefix('admin')->name('dashboard.')->group(function(){
 
         Route::get('home','HomeController@index')->name('index');
         Route::post('logout','Auth\LogoutController@logout')->name('logout');
+
+
+        // Users Routes 
+
+        Route::resource('users','UserController')->except('show');
+
+        // Admins Routes 
+
+        Route::resource('admins','AdminController')->except('show');
+
+        // Categories Routes 
+
+        Route::resource('categories','CategoryController')->except(['show']);
+
+        // Products Routes 
+
+        Route::resource('products','ProductController')->except(['show']);
+
+        // Roles Routes
+
+        Route::resource('roles','RoleController');
+
+        // Langs routes 
+
+        Route::get('{lang}','LangController@changeLang')->name('langs.change');
+
+
+    
 
     });
 

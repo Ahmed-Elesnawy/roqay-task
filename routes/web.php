@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/','ProductController@index')->name('frontend.products.index');
+
+
+Route::get('cart','CartController@index')->name('cart.index');
+
+Route::post('cart/{product}','CartController@addToCart')->name('cart.add');
+
+Route::post('cart','CartController@clearCart')->name('cart.clear');
+
+
+Route::post('cart/{id}/clear','CartController@clearItem')->name('cart.clear-item');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

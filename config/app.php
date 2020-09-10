@@ -1,5 +1,7 @@
 <?php
 
+use App\Providers\RepositoryServiceProvider;
+
 return [
 
     /*
@@ -166,14 +168,22 @@ return [
          * Package Service Providers...
          */
 
+        Darryldecode\Cart\CartServiceProvider::class,
+
+
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        // My providers
+
+        RepositoryServiceProvider::class
 
     ],
 
@@ -226,6 +236,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // Packges alias
+
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class
+
 
     ],
 
